@@ -80,10 +80,8 @@ public final class SearchShortDistanceAPI {
 	public void search(AirPortTerminal source, AirPortTerminal destination) {
 		int searchIndex = 0;
 		// do {
-		AirPortTerminal orgSource = terminalList.get(terminalList
-				.indexOf(source));
-		AirPortTerminal orgDestination = terminalList.get(terminalList
-				.indexOf(destination));
+		AirPortTerminal orgSource = getTerminal(source);
+		AirPortTerminal orgDestination = getTerminal(destination);
 
 		List<AirPortTerminal> path = api.findSortestRoute(orgSource,
 				orgDestination);
@@ -91,5 +89,10 @@ public final class SearchShortDistanceAPI {
 		// api.removePath(path);
 		searchIndex++;
 		// } while (searchIndex < 32);
+	}
+	
+	public AirPortTerminal getTerminal(AirPortTerminal source){
+		return terminalList.get(terminalList
+				.indexOf(source));
 	}
 }
